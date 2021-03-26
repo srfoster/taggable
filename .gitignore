@@ -1,0 +1,9 @@
+*~
+\#*
+*.bak
+.\#*
+.DS_Store
+compiled/
+/doc/
+/Unreal/
+/BuildUnreal/
