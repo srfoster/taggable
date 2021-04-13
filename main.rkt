@@ -2,10 +2,27 @@
 
 (require taggable/mod-info)
 
-(provide with-tag
+(provide tag
+         with-tag
          move-with-tag
          delete-with-tag
          find-with-tag)
+
+(define (tag t v)
+  (thunk
+   @unreal-js{
+     (function(){
+     var x = @(if (procedure? v)
+                  (v)
+                  v)
+             
+     if(!global.taggedThings){
+       global.taggedThings = {};}
+
+     global.taggedThings['@t'] = x;
+     return x;
+     })()
+ }))
 
 ;Should delete if already some
 (define (with-tag tag code)
